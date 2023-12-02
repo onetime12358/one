@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function addUser() {
+            //1. 获得用户输入的数据
+            var id=document.getElementById("id");
+            var username=document.getElementById("username");
+            var gender=document.getElementById("gender");
+            var food=document.getElementById("food");
+            //2. 新建tr和td
+            var tr = document.createElement("tr");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            var td4 = document.createElement("td");
+            var td5 = document.createElement("td");
+
+            //3. 将用户输入的数据放在对应的td内
+            td1.innerText=id.value;
+            td2.innerText=username.value;
+            td3.innerText=gender.value;
+            td4.innerText=food.value;
+            td5.innerHTML="<input type='button' value='删除'  onclick='deleteUser()'>";
+
+            //4. td放在tr内，tr放在table内
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            tr.appendChild(td5);
+
+            document.getElementById("users").appendChild(tr);
+
+            //5. 清空
+            id.value="";
+            username.value="";
+            gender.value="";
+            food.value="";
+
+        }
+        function deleteUser(){
+            //删除当前行(tr)
+            event.target.parentElement.parentElement.remove()
+        }
+    </script>
+</head>
+<body>
+<table border="1" width="300px" align="center" id="users">
+    <tr>
+        <th>序号</th>
+        <th>早餐</th>
+        <th>午餐</th>
+        <th>晚餐</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>豆浆油条</td>
+        <td>鱼香肉丝</td>
+        <td>爆炒青椒</td>
+        <td>
+            <input type="button" value="删除" onclick="deleteUser()">
+        </td>
+    </tr>
+</table>
+<table align="center">
+    <tr>
+        <td>序号：</td>
+        <td><input type="text" id="id"/></td>
+    </tr>
+    <tr>
+        <td>早餐：</td>
+        <td><input id="username"/></td>
+    </tr>
+    <tr>
+        <td>午餐：</td>
+        <td><input id="gender"/></td>
+    </tr>
+    <tr>
+        <td>晚餐：</td>
+        <td><input id="food"/></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="button" value="添加" onclick="addUser()">
+        </td>
+
+    </tr>
+</table>
+<h1>以下为用户饮食信息，请根据以下信息成成适合用户的饮食标</h1>
+</body>
+</html>
